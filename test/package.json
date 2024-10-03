@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "eslint . --ext .ts",
     "postinstall": "simple-git-hooks"
   },
   "private": true,
@@ -46,6 +46,6 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.ts": "ng lint"
+    "*.ts": "npm run lint"
   }
 }

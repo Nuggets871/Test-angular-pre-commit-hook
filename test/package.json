@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint .",
-    "postinstall": "simple-git-hooks"
+    "postinstall": "simple-git-hooks",
+    "format": "prettier --write \"src/**/*.{ts,js,json,css,scss,html}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json,css,scss,html}\""
   },
   "private": true,
   "dependencies": {
@@ -38,6 +40,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
     "simple-git-hooks": "^2.11.1",
     "typescript": "~5.5.2",
     "typescript-eslint": "8.2.0"
@@ -46,6 +49,10 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.ts": "npm run lint"
+    "*.ts": [
+      "npm run lint",
+      "prettier --write"
+    ],
+    "*.{js,json,css,scss,html}": "prettier --write"
   }
 }
